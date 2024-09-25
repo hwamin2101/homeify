@@ -188,6 +188,9 @@ const Modal:React.FC<ModalProps> = ({
               onClick={handleSubmit}
               />
               </div> 
+              {footer}
+            {/* 25/09/2024  
+            1:35:13 - Auth UI */}
           </div>
         </div>
       </div>
