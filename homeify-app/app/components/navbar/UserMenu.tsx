@@ -1,11 +1,22 @@
 'use client';
 import {AiOutlineMenu} from "react-icons/ai";
 import Avatar from "../Avatar";
-import {useState, useCallback} from "react";
+import React, {useState, useCallback} from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-const UserMenu = () => {
+import useLoginModal from "@/app/hooks/useLoginModal";
+import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
+
+
+interface userMenuProps{
+  currentUser?: User| null
+}
+const UserMenu: React.FC<userMenuProps> = ({
+  currentUser
+}) => {
   const RegisterModal = useRegisterModal();
+  const LoginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(()=>{
     setIsOpen ((value)=>!value);
@@ -71,20 +82,50 @@ const UserMenu = () => {
         "
         >
           <div className="flex flex-col cursor-pointer">
+            {currentUser ? (
+               <>
+               <MenuItem
+               onClick={()=>{}}
+               label="My trips"
+               />
+               <MenuItem
+               onClick={()=>{}}
+               label="My favorites"
+               />
+                <MenuItem
+               onClick={()=>{}}
+               label="My reservation"
+               />
+                <MenuItem
+               onClick={()=>{}}
+               label="My properties"
+               />
+                <MenuItem
+               onClick={()=>{}}
+               label="Homeify my home"
+               />
+               <hr/>
+               <MenuItem
+               onClick={()=> signOut()}
+               label="Log out"
+               />
+             </>
+            ):(
           <>
             <MenuItem
-            onClick={()=>{}}
+            onClick={LoginModal.onOpen}
             label="Login"
             />
-          </>
-          <>
+         
             <MenuItem
             onClick={RegisterModal.onOpen}
             label="Sign up"
             />
           </>
+            )}
           </div>
         </div>
+        // 26/09/2024 - 2:28:00 - Social Login 
       )}
     </div>
   );
