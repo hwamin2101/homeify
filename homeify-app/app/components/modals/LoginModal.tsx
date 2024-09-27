@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios';
-import {signIn} from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from 'react';
@@ -42,9 +42,9 @@ const LoginModal = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
-      signIn('credentials',{
-        ...data,
-        redirect: false,
+        signIn('credentials',{
+            ...data,
+            redirect: false,
       })
       .then((callback) => {
         setIsLoading(false);
