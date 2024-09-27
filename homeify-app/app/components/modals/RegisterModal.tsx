@@ -17,6 +17,8 @@ import { FaBullseye } from 'react-icons/fa';
 import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
+import { signIn } from 'next-auth/react';
+import { sign } from 'crypto';
 const RegisterModal = () => {
     const RegisterModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
@@ -91,13 +93,13 @@ const RegisterModal = () => {
                 outline
                 label='Continue with Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => signIn('github')} //kieu khong bam vao github de login duoc :)) 2:36:38
             />
             <div
                 className="
