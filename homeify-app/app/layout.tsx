@@ -2,24 +2,17 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import "./globals.css";
 import {Nunito} from "next/font/google";
-import Navbar from "./components/navbar/narbar";
+import Navbar from "./components/navbar/navbar";
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import LoginModal from "./components/modals/LoginModal";
-// import Modal from "./components/modals/Modal";
+import RentModal from "./components/modals/RentModal";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
+
+
+
 
 export const metadata: Metadata = {
   title: "Homeify",
@@ -34,7 +27,7 @@ const font = Nunito({
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   const currentUser = await getCurrentUser();
 
@@ -44,9 +37,10 @@ export default async function RootLayout({
         className={font.className}>
           <ClientOnly>
             <ToasterProvider />
+            <RentModal/>
             <LoginModal />
             <RegisterModal/>
-            <Navbar currentUser={currentUser} />
+            <Navbar currentUser={currentUser}/>
           </ClientOnly>
       
         {children}

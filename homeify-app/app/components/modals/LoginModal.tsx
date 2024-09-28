@@ -21,9 +21,11 @@ import Button from '../Button';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { useRouter } from 'next/navigation';
 const LoginModal = () => {
-    const Router = useRouter();
+    const router = useRouter();
+
     const RegisterModal = useRegisterModal();
     const LoginModal = useLoginModal();
+
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -51,7 +53,7 @@ const LoginModal = () => {
 
         if(callback?.ok){
             toast.success('Logged in');
-            Router.refresh();
+            router.refresh();
             LoginModal.onClose();
         }
         if(callback?.error){
@@ -59,6 +61,10 @@ const LoginModal = () => {
         }
       })
     }
+    const toggle = useCallback(()=>{
+        LoginModal.onClose();
+        RegisterModal.onOpen();
+    },[LoginModal, RegisterModal]);
 
     const bodyContent = (
         <div className= "flex flex-col gap-4">
@@ -94,7 +100,7 @@ const LoginModal = () => {
                 outline
                 label='Continue with Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
@@ -112,17 +118,17 @@ const LoginModal = () => {
             >
                 <div className="justify-center flex flex-row items-center gap-2">
                     <div>
-                        Already have an account?
+                        First time using Homeify?
                     </div>
                     <div
-                        onClick={RegisterModal.onClose}
+                        onClick={toggle}
                         className="
                             text-neutral-800
                             cursor-pointer
                             hover:underline
                         "
                     >
-                        Log in
+                        Create an account
                     </div>
                     
                 </div>

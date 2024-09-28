@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import axios from 'axios';
 import { AiFillGithub } from "react-icons/ai"
@@ -19,8 +19,10 @@ import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { signIn } from 'next-auth/react';
 import { sign } from 'crypto';
+import useLoginModal from '@/app/hooks/useLoginModal';
 const RegisterModal = () => {
     const RegisterModal = useRegisterModal();
+    const LoginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -51,6 +53,10 @@ const RegisterModal = () => {
                 setIsLoading(false);
             })
     }
+    const toggle = useCallback(()=>{
+        RegisterModal.onClose();
+        LoginModal.onOpen();
+    },[LoginModal, RegisterModal]);
 
     const bodyContent = (
         <div className= "flex flex-col gap-4">
@@ -114,7 +120,7 @@ const RegisterModal = () => {
                         Already have an account?
                     </div>
                     <div
-                        onClick={RegisterModal.onClose}
+                        onClick={toggle}
                         className="
                             text-neutral-800
                             cursor-pointer
