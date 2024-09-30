@@ -1,0 +1,11 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off", // Tắt quy tắc no-explicit-any
+    "@typescript-eslint/no-unused-vars": "off", // Tắt quy tắc no-unused-vars
+    "no-var": "off", // Tắt quy tắc no-var
+    "react-hooks/exhaustive-deps": "off", // Tắt quy tắc exhaustive-deps
+    "prefer-const": "off", // Tắt quy tắc prefer-const
+    "@typescript-eslint/ban-ts-comment": "off" // Tắt quy tắc ban-ts-comment
+  }
+}
