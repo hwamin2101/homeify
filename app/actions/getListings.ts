@@ -1,14 +1,18 @@
-import prisma from "@/libs/prismadb";
+import prisma from '@/libs/prismadb';
 
 export default async function getListings() {
   try {
     const listings = await prisma.listing.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
+      // Các tùy chọn truy vấn
     });
-    return listings;
-  } catch (erorr: any) {
-    throw new Error(erorr);
+
+    const SafeListing = listings.map((listing) => ({
+      ...listing,
+      createdAt: listing.createdAt.toISOString(),
+    }));
+
+    return SafeListing;
+  } catch (error: any) {
+    throw new Error(error);
   }
 }
