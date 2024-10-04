@@ -2,7 +2,7 @@ import prisma from "@/libs/prismadb";
 interface IParams{
   listingId?: string;
 }
-export default asycn function getListingById(
+export default async function getListingById(
   params: IParams
 ){
   try{
@@ -21,16 +21,16 @@ export default asycn function getListingById(
 
     return {
       ...listing,
-      createdAt: listing.createdAt.toIOString(),
+      createdAt: listing.createdAt.toISOString(),
       user:{
         ...listing.user,
-        createdAt: listing.user.createdAt.toIOString(),
-        createdAt: listing.user.createdAt.toIOString(),
+        createdAt: listing.user.createdAt.toISOString(),
+        updatedAt: listing.user.updatedAt.toISOString(),
         emailVerified:
-          listing.user.emailVerified?.toIOString()||null,
+          listing.user.emailVerified?.toISOString() || null,
       }
     };
-  }catch(erorr:any){
+  } catch( error : any ){
     throw new Error(error);
   }
 }

@@ -1,18 +1,17 @@
 "use client";
-
-import {Reservation} from "@/prisma/client";
 import {SafeListing, SafeUser} from "@/types";
-import {useMemo} from " react"
 import {categories} from "@/components/navbar/Categories";
-import Container from " @/components/Container";
 import ListingHead from "@/components/listings/ListingHead";
+import { Reservation } from "@prisma/client";
+import { useMemo } from "react";
+import Container from "@/components/Container";
 
 interface ListingClientProps{
   reservation?: Reservation[];
   listing: SafeListing & {
     user: SafeUser
   };
-  currentUser?: SafeUser|| null;
+  currentUser?: SafeUser | null;
 }
 const ListingClient: React.FC<ListingClientProps> = ({
   listing,
@@ -20,12 +19,12 @@ const ListingClient: React.FC<ListingClientProps> = ({
 }) => {
   const category = useMemo(()=>{
     return categories.find((item)=>
-    item.label === listing.category)
+    item.label === listing.category);
   },[listing.category]);
 
   return ( 
     <Container>
-      <div className="max-w-sceen-lg mx-auto">
+      <div className="max-w-screen-lg mx-auto">
         <div className="flex flex-col gap-6">
             <ListingHead
               title={listing.title}

@@ -6,12 +6,12 @@ export default async function getListings() {
       // Các tùy chọn truy vấn
     });
 
-    const SafeListing = listings.map((listing) => ({
+    const safeListings = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
     }));
 
-    return SafeListing;
+    return safeListings;
   } catch (error: any) {
     throw new Error(error);
   }
