@@ -7,7 +7,7 @@ import useCountries from "@/hooks/useCountries";
 export type CountrySelectValue = {
   flag: string;
   label: string;
-  latlng: string;
+  latlng: number[];
   region: string;
   value: string;
 };
@@ -30,13 +30,13 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
           <div className="flex flex-row items-center gap-3">
             <div>{option.flag}</div>
             <div>
-              {option.label}
+              {option.label}, 
               <span className="text-neutral-500 ml-1">{option.region}</span>
             </div>
           </div>
         )}
         classNames={{
-          control: () => "p-3 border-2",
+          control: () => "p-3 border-2 z-10",
           input: () => "text-lg",
           option: () => "text-lg",
         }}

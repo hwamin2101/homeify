@@ -89,8 +89,7 @@ const RentModal = () => {
     }
     setIsLoading(true);
 
-    axios
-      .post("/api/listing", data)
+    axios.post("/api/listings", data)
       .then(() => {
         toast.success("Listing Created!");
         router.refresh();
@@ -100,8 +99,7 @@ const RentModal = () => {
       })
       .catch(() => {
         toast.error("Something went wrong");
-      })
-      .finally(() => {
+      }).finally(() => {
         setIsLoading(false);
       });
   };
@@ -168,9 +166,9 @@ const RentModal = () => {
   }
   if (step == STEPS.INFO) {
     bodyContent = (
-      <div className=" flex felx-col gap-8">
+      <div className=" flex flex-col gap-8">
         <Heading
-          title="Share some basic abput your place"
+          title="Share some basic about your place"
           subtitle="what amenities do you have?"
         />
         <Counter
@@ -216,7 +214,7 @@ const RentModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="How would you describe your place"
-          subtitle="Sort and sweet work best!"
+          subtitle="Short and sweet work best!"
         />
         <Input
           id="title"

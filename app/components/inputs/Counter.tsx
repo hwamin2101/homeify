@@ -26,17 +26,18 @@ const Counter:React.FC<CounterProps> = ({
       return;
     }
     onChange(value - 1);
-  },[onChange, value]);
+  },[value,onChange]);
   return ( 
-    <div className="flex flex-col items-center justify-between">
+    <div className="flex flex-row items-center justify-between">
       <div className="flex flex-col">
       <div className="font-medium">
-      {title}
+          {title}
       </div>
       <div className="font-light text-gray-600">
-      {subtitle}
+          {subtitle}
       </div>
-      <div className="flex flex-col items-center gap-4">
+      </div>
+      <div className="flex flex-row items-center gap-4">
         <div 
         onClick={onReduce}
         className="
@@ -83,7 +84,7 @@ const Counter:React.FC<CounterProps> = ({
 
       </div>
       </div>
-    </div>
+   
    );
 }
  

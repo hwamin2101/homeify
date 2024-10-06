@@ -1,12 +1,13 @@
 'use client';
 
 import L from 'leaflet';
-import{MapContainer, Marker, TileLayer} from "react-leaflet";
+import {MapContainer, Marker, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import React from 'react';
+
 
 //@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
@@ -18,30 +19,33 @@ L.Icon.Default.mergeOptions({
 
 interface MapProps{
   center?: number[]
+
 }
 const Map: React.FC<MapProps> = ({
-  center
+  center,
+ 
 }) => {
+  
   return ( 
     <MapContainer
-    center={ center as L.LatLngExpression || [51, -0.09]}
-    zoom={center? 4:2 }
+    center={ center as L.LatLngExpression || [51.505, -0.09]}
+    zoom={center ? 4:2 }
     scrollWheelZoom={false}
-    className='h-[35vh] rounded-lg'
+    className="h-[35vh] rounded-lg z-0"
     >
-      <TileLayer
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
       {center &&(
         <Marker position={center as L.LatLngExpression}
         />
-       
+     
       )}
       {/* 28-09-2024  4:06:40 - Listing creation step3 */}
 
     </MapContainer>
-   );
-}
+   )
+};
  
 export default Map;

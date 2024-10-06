@@ -2,7 +2,7 @@
 
 import useCountries from "@/hooks/useCountries";
 import { SafeUser, SafeListing } from "@/types";
-import { Listing, Reservation } from "@prisma/client";
+import { Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
@@ -81,11 +81,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
             alt="listing"
             src={data.imageSrc}
             className="
-      object-cover
-      h-full
-      w-full
-      group-hover:scale-110
-      transition"
+            object-cover
+            h-full
+            w-full
+            group-hover:scale-110
+            transition"
           />
           <div className="absolute top-3 right-3">
             <HeartButton listingId={data.id} currentUser={currentUser} />

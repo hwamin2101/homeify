@@ -3,7 +3,8 @@ import prisma from '@/libs/prismadb';
 export default async function getListings() {
   try {
     const listings = await prisma.listing.findMany({
-      // Các tùy chọn truy vấn
+      orderBy: { createdAt: 'desc' },
+      
     });
 
     const safeListings = listings.map((listing) => ({
