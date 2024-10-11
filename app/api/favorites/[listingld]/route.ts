@@ -4,7 +4,7 @@ import getCurrentUser from "@/actions/getCurrentUser";
 import prisma from "@/libs/prismadb";
 
 interface IParams {
-  listingId: string; // listingId luôn là bắt buộc
+  listingId?: string; // listingId luôn là bắt buộc
 }
 
 export async function POST(request: Request, { params }: { params: IParams }) {
@@ -17,7 +17,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
   const { listingId } = params;
 
   if (!listingId || typeof listingId !== "string") {
-    return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    throw new Error('Invalid ID');
   }
 
   let favoriteIds = [...(currentUser.favoriteIds || [])];
@@ -52,7 +52,7 @@ export async function DELETE(
   const { listingId } = params;
 
   if (!listingId || typeof listingId !== "string") {
-    return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    throw new Error('Invalid ID');
   }
 
   let favoriteIds = [...(currentUser.favoriteIds || [])];
