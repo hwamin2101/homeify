@@ -12,6 +12,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import ListingReservation from "@/components/listings/ListingReservation";
 import { Range } from "react-date-range";
+
 const initialDateRange = {
   startDate: new Date(),
   endDate: new Date(),
@@ -19,7 +20,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps{
-  reservation?: SafeReservation;
+  reservations?: SafeReservation;
   listing: SafeListing & {
     user: SafeUser
   };
@@ -27,16 +28,16 @@ interface ListingClientProps{
 }
 const ListingClient: React.FC<ListingClientProps> = ({
   listing,
-  reservation = [],
+  reservations = [],
   currentUser
 }) => {
   const loginModal = useLoginModal();
   const router = useRouter();
 
-  const disableDates = useMemo(() => {
+  const disabledDates = useMemo(() => {
     let dates: Date[] = [];
 
-    reservation.forEach((reservation) => {
+    reservations.forEach((reservation) => {
       const range = eachDayOfInterval({
         start: new Date(reservation.startDate),
         end: new Date(reservation.endDate)
@@ -46,7 +47,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     });
 
     return dates;
-  }, [reservation]);
+  }, [reservations]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
@@ -69,7 +70,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       toast.success('Listing reserved!');
       setDateRange(initialDateRange);
       //redirect to /trips
-      router.refresh();
+      router.push('/trips');
     })
     .catch(() => {
       toast.error('Something went worng.');
@@ -147,7 +148,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                   onChangeDate={(value) => setDateRange(value)}
                   dateRange={dateRange}
                   onSubmit={onCreateReservation}
-                  disabledDates={disableDates}
+                  disabledDates={disabledDates}
                 />
               </div>
             </div>

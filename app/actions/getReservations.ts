@@ -1,5 +1,4 @@
 import prisma from '@/libs/prismadb';
-import { use } from 'react';
 
 interface IParmas {
     listingId?: string;
@@ -52,6 +51,6 @@ export default async function getReservations(
 
     return safeReservations;
     } catch (error: any) {
-        throw new Error(error);
+        throw Error(error);
     }
 }
