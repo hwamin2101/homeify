@@ -100,10 +100,10 @@ const SearchModal = () => {
 
     const actionLabel = useMemo(() => {
         if (step === STEPS.INFO) {
-            return 'Search';
+            return 'Tìm kiếm';
         }
 
-        return 'Next';
+        return 'Tiếp theo';
     }, [step]);
 
     const secondaryActionLabel = useMemo(() => {
@@ -111,7 +111,7 @@ const SearchModal = () => {
             return undefined;
         }
 
-        return 'Back';
+        return 'Quay lại';
     }, [step]);
 
     let bodyContent = (
@@ -119,8 +119,8 @@ const SearchModal = () => {
             className="flex flex-col gap-8"
         >
             <Heading 
-                title="Where do you wanna go?"
-                subtitle="Find the perfect location!"
+                title="Bạn muốn đi đâu?"
+                subtitle="Tìm vị trí hoàn hảo!"
             />
             <CountrySelect 
                 value={location}
@@ -137,8 +137,8 @@ const SearchModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading 
-                    title="When do you plan to go?"
-                    subtitle="Make sure everyone is free!"
+                    title="Bạn dự định đi khi nào?"
+                    subtitle="Hãy đảm bảo mọi người đều rảnh nhé!"
                 />
                 <Calendar 
                     value={dateRange}
@@ -152,24 +152,24 @@ const SearchModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading 
-                    title="More information"
-                    subtitle="Find your perfect place!"
+                    title="Thêm thông tin"
+                    subtitle="Tìm nơi lý tưởng cho bạn!"
                 />
                 <Counter 
-                    title="Guests"
-                    subtitle="How many guests are coming?"
+                    title="Số lượng khách"
+                    subtitle="Có bao nhiêu khách sẽ đến?"
                     value={guestCount}
                     onChange={(value) => setGuestCount(value)}
                 />
                 <Counter 
-                    title="Rooms"
-                    subtitle="How many rooms do you need?"
+                    title="Số lượng phòng"
+                    subtitle="Bạn cần bao nhiêu phòng?"
                     value={roomCount}
                     onChange={(value) => setRoomCount(value)}
                 />
                 <Counter 
-                    title="Bathrooms"
-                    subtitle="How many bathrooms do you need?"
+                    title="Số luọng phòng tắm"
+                    subtitle="Bạn cần bao nhiêu phòng tắm?"
                     value={bathroomCount}
                     onChange={(value) => setBathroomCount(value)}
                 />
@@ -182,7 +182,7 @@ const SearchModal = () => {
             isOpen={searchModal.isOpen}
             onClose={searchModal.onClose}
             onSubmit={onSubmit}
-            title="Filters"
+            title="Bộ lọc"
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={step === STEPS.LOCATION ? undefined : onBack}

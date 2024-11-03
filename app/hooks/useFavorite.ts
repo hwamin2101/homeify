@@ -45,9 +45,9 @@ const useFavorite = ({
 
             await request();
             router.refresh();
-            toast.success('Success');
+            toast.success('Thành công');
         } catch (error) {
-            toast.error('Something went wrong.');
+            toast.error('Có gì đó không ổn');
         }
     }, 
     [

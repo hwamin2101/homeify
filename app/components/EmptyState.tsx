@@ -11,8 +11,8 @@ interface EmptyState{
 }
 
 const EmptyState:React.FC<EmptyState> = ({
-  title ="No exact match",
-  subtitle ="Try changing or remove some of your filters",
+  title ="Không có kết quả trùng khớp",
+  subtitle ="Hãy thử thay đổi hoặc xóa một số bộ lọc của bạn",
   showReset
 }) => {
   const router = useRouter();
@@ -34,7 +34,7 @@ const EmptyState:React.FC<EmptyState> = ({
           {showReset && (
         <Button
         outline
-        label="Remove all filters"
+        label="Xóa tất cả bộ lọc"
         onClick={() => router.push('/')}
         />
       )}

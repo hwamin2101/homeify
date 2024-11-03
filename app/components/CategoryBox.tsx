@@ -1,76 +1,75 @@
-'use client'
+// CategoryBox.tsx
+'use client';
 
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 import { IconType } from "react-icons";
-import qs from "query-string"
+import qs from "query-string";
 
-interface CategoryBoxProps{
-  icon:IconType;
-  label: string;
+interface CategoryBoxProps {
+  icon: IconType;
+  label: string;       // Giá trị logic để lọc
+  displayLabel: string; // Tên hiển thị tiếng Việt
   selected?: boolean;
-
-
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
   icon: Icon,
   label,
+  displayLabel,
   selected
 }) => {
   const router = useRouter();
   const params = useSearchParams();
-  
+
   const handleClick = useCallback(() => {
     let currentQuery = {};
-    if(params){
+    if (params) {
       currentQuery = qs.parse(params.toString());
     }
 
-    const updatedQuery: any ={
+    const updatedQuery: any = {
       ...currentQuery,
-      category: label
-    }
+      category: label // Sử dụng `label` để xác định danh mục lọc
+    };
 
-    if(params?.get('category')===label){
+    if (params?.get('category') === label) {
       delete updatedQuery.category;
     }
 
     const url = qs.stringifyUrl({
-      url:'/',
+      url: '/',
       query: updatedQuery,
-
-    },{
-      skipNull:true
+    }, {
+      skipNull: true
     });
     router.push(url);
-  },[label,params, router]);
-  return ( 
+  }, [label, params, router]);
+
+  return (
     <div
-    onClick={handleClick}
-    className={`
-    
-      flex
-      flex-col
-      items-center
-      justify-center
-      gap-2
-      p-3
-      border-b-2
-      hover:text-neutral-800
-      trasition
-      cursor-pointer
-      ${selected ? 'border-b-neutral-800':'border-transparent'}
-      ${selected ? 'text-neutral-800':'text-neutral-800'}
+      onClick={handleClick}
+      className={`
+        flex
+        flex-col
+        items-center
+        justify-center
+        gap-2
+        p-3
+        border-b-2
+        hover:text-neutral-800
+        transition
+        cursor-pointer
+        ${selected ? 'border-b-neutral-800' : 'border-transparent'}
+        ${selected ? 'text-neutral-800' : 'text-neutral-500'}
       `}
     >
-      <Icon size ={26}/>
+      <Icon size={26} />
       <div className="font-medium text-sm">
-        {label}
-
+        {displayLabel} {/* Hiển thị tên tiếng Việt */}
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default CategoryBox;

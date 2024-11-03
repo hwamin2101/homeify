@@ -42,7 +42,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
                     $ {price}
                 </div>
                 <div className="font-light text-neutral-600">
-                    night
+                    đêm
                 </div>
             </div>
             <hr />
@@ -69,7 +69,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
                 text-lg
             ">
                 <div>
-                    Total 
+                    Tổng số 
                 </div>
                 <div>
                     $ {totalPrice}

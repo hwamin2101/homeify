@@ -38,14 +38,14 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn("credentials", {
+    signIn("Xác thực thông tin", {
       ...data,
       redirect: false,
     }).then((callback) => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success("Logged in");
+        toast.success("Đã đăng nhập");
         router.refresh();
         LoginModal.onClose();
       }
@@ -61,7 +61,7 @@ const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome back" subtitle="Login to your account!" />
+      <Heading title="Chào mừng trở lại" subtitle="Đăng nhập vào tài khoản của bạn!" />
       <Input
         id="email"
         label="Email"
@@ -72,9 +72,9 @@ const LoginModal = () => {
       />
 
       <Input
-        id="password"
-        type="password"
-        label="Password"
+        id="Mật khẩu"
+        type="Mật khẩu"
+        label="Mật khẩu"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -88,13 +88,13 @@ const LoginModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="Tiếp tục với Google"
         icon={FcGoogle}
         onClick={() => signIn("google")}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="Tiếp tục với Github"
         icon={AiFillGithub}
         onClick={() => signIn("github")}
       />
@@ -107,7 +107,7 @@ const LoginModal = () => {
                 "
       >
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>First time using Homeify?</div>
+          <div>Lần đầu sử dụng Homeify?</div>
           <div
             onClick={toggle}
             className="
@@ -116,7 +116,7 @@ const LoginModal = () => {
                             hover:underline
                         "
           >
-            Create an account
+            Tạo một tài khoản
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ import SearchModal from "./components/modals/SearchModal";
 
 export const metadata: Metadata = {
   title: "Homeify",
-  description: "A home for your life",
+  description: "Tìm nhà, đặt phòng, cho thuê nhà",
 };
 
 const font = Nunito({

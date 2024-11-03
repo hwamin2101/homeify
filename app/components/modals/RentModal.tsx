@@ -91,14 +91,14 @@ const RentModal = () => {
 
     axios.post("/api/listings", data)
       .then(() => {
-        toast.success("Listing Created!");
+        toast.success("Đã tạo danh sách!");
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
       .catch(() => {
-        toast.error("Something went wrong");
+        toast.error("Có gì đó không ổn.");
       }).finally(() => {
         setIsLoading(false);
       });
@@ -106,21 +106,21 @@ const RentModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
-      return "Create";
+      return "Tạo";
     }
-    return "Next";
+    return "Tiếp theo";
   }, [step]);
   const secondaryActionLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
       return undefined;
     }
-    return "Back";
+    return "Quay lại";
   }, [step]);
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
-        subtitle="pick a category"
+        title="Mô tả nơi ở của bạn"
+        subtitle="Chọn một danh mục"
       />
 
       <div
@@ -134,11 +134,11 @@ const RentModal = () => {
         "
       >
         {categories.map((item) => (
-          <div key={item.label} className=" col-span-1">
+          <div key={item.displayLabel} className=" col-span-1">
             <CategoryInput
               onClick={(category) => setCustomValue("category", category)}
-              selected={category === item.label}
-              label={item.label}
+              selected={category === item.displayLabel}
+              label={item.displayLabel}
               icon={item.icon}
               //  3:37:37
             />
@@ -152,8 +152,8 @@ const RentModal = () => {
     bodyContent = (
       <div className=" flex flex-col gap-8">
         <Heading
-          title="where is your place located?"
-          subtitle=" Help guest find you"
+          title="Nhà bạn ở đâu?"
+          subtitle="Giúp khách tìm thấy bạn"
         />
 
         <CountrySelect
@@ -168,26 +168,26 @@ const RentModal = () => {
     bodyContent = (
       <div className=" flex flex-col gap-8">
         <Heading
-          title="Share some basic about your place"
-          subtitle="what amenities do you have?"
+          title="Chia sẻ một số thông tin cơ bản về nơi của bạn"
+          subtitle="Bạn có những tiện nghi gì?"
         />
         <Counter
-          title="Guests"
-          subtitle="How many guests do you allow?"
+          title="Số lượng khách"
+          subtitle="Bạn cho phép bao nhiêu khách?"
           value={guestCount}
           onChange={(value) => setCustomValue("guestCount", value)}
         />
         <hr />
         <Counter
-          title="Room"
-          subtitle="How many rooms do you have?"
+          title="Số phòng"
+          subtitle="Bạn có bao nhiêu phòng?"
           value={roomCount}
           onChange={(value) => setCustomValue("roomCount", value)}
         />
         <hr />
         <Counter
-          title="Bathrooms"
-          subtitle="How many bathrooms do you have?"
+          title="Số phong tắm"
+          subtitle="Bạn có bao nhiêu phòng tắm?"
           value={bathroomCount}
           onChange={(value) => setCustomValue("bathroomCount", value)}
         />
@@ -198,8 +198,8 @@ const RentModal = () => {
     bodyContent = (
       <div className=" flex flex-col gap-8">
         <Heading
-          title="Add a photo of your place"
-          subtitle="Show guest what your place looks like!"
+          title="Thêm ảnh về địa điểm của bạn"
+          subtitle="Cho khách thấy nơi ở của bạn trông như thế nào!"
         />
         <ImageUpload
           value={imageSrc}
@@ -213,12 +213,12 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place"
-          subtitle="Short and sweet work best!"
+          title="Bạn sẽ mô tả nơi ở của bạn như thế nào?"
+          subtitle="Ngắn gọn và súc tích là tốt nhất!"
         />
         <Input
           id="title"
-          label="Title"
+          label="Tiêu đề"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -227,7 +227,7 @@ const RentModal = () => {
         <hr />
         <Input
           id="description"
-          label="Description"
+          label="Mô tả"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -241,12 +241,12 @@ const RentModal = () => {
     bodyContent = (
       <div className=" flex flex-col gap-8">
         <Heading
-          title="Now, set your price"
-          subtitle="How much do you charge per night?"
+          title="Bây giờ, hãy đặt giá phòng của bạn"
+          subtitle="Bạn tính bao nhiêu tiền một đêm?"
         />
         <Input
           id="price"
-          label="Price"
+          label="Giá"
           formatPrice
           type="number"
           disabled={isLoading}
@@ -267,7 +267,7 @@ const RentModal = () => {
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       body={bodyContent}
-      title="Homeify your home"
+      title="Cho thuê chỗ ở qua Homeify"
     />
   );
 };

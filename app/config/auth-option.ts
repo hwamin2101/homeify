@@ -19,14 +19,14 @@ export const authOptions: AuthOptions = {
     }),
 
     CredentialProvider({
-      name: "credentials",
+      name: "Xác thực thông tin",
       credentials: {
-        email: { label: "email", type: "text" },
-        password: { label: "password", type: "password" },
+        email: { label: "Email", type: "text" },
+        password: { label: "Mật khẩu", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || credentials?.password) {
-          throw new Error("Invalid credentials");
+          throw new Error("Thông tin xác thực không hợp lệ");
         }
 
         const user = await prisma.user.findUnique({
@@ -36,7 +36,7 @@ export const authOptions: AuthOptions = {
         });
 
         if (!user || !user?.hashedPassword) {
-          throw new Error("Invalid credentials");
+          throw new Error("Thông tin xác thực không hợp lệ");
         }
 
         const isCorrectPassword = await bcrypt.compare(
@@ -45,7 +45,7 @@ export const authOptions: AuthOptions = {
         );
 
         if (!isCorrectPassword) {
-          throw new Error("Invalid credentials");
+          throw new Error("Thông tin xác thực không hợp lệ");
         }
         return user;
       },

@@ -12,8 +12,8 @@ const PropertiesPage = async () => {
         return (
             <ClientOnly>
                 <EmptyState 
-                    title="Unauthorized"
-                    subtitle="Please login"
+                    title="Không thể xác thực"
+                    subtitle="Vui lòng đăng nhập"
                 />
             </ClientOnly>
         )
@@ -27,8 +27,8 @@ const PropertiesPage = async () => {
         return (
             <ClientOnly>
                 <EmptyState
-                    title="No propeties found"
-                    subtitle="Looks like you have no properties."
+                    title="Không tìm thấy danh mục nào"
+                    subtitle="Có vẻ như bạn không đăng bất kỳ danh mục nào."
                 />
             </ClientOnly>
         )

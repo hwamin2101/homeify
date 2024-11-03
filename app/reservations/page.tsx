@@ -12,8 +12,8 @@ const ReservationsPage = async () => {
         return (
             <ClientOnly>
                 <EmptyState 
-                    title="Unauthorized"
-                    subtitle="Please login"
+                    title="Không thể xác thực"
+                    subtitle="Vui lòng đăng nhập"
                 />
             </ClientOnly>
         );
@@ -27,8 +27,8 @@ const ReservationsPage = async () => {
         return (
             <ClientOnly>
                 <EmptyState 
-                    title="No reservations found"
-                    subtitle="Look like you have no reservations on your props"
+                    title="Không tìm thấy danh mục nào"
+                    subtitle="Có vẻ như bạn chưa đặt bất kỳ chỗ nào."
                 />
             </ClientOnly>
         )

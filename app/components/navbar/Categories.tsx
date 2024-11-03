@@ -10,84 +10,116 @@ import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
 
-export const categories =[
+export const categories = [
   {
-  label:'Beach',
-  icon: TbBeach,
-  description: 'This property is close to the beach'
+    label: 'Beach',
+    displayLabel: 'Bãi Biển',
+    icon: TbBeach,
+    description: 'Nơi nghỉ gần bãi biển'
   },
   {
-    label:'Windmills',
+    label: 'Windmills',
+    displayLabel: 'Cối Xay Gió',
     icon: GiWindmill,
-    description: 'This property has a windmill'
+    description: 'Nơi nghỉ có cối xay gió'
   },
   {
-    label:'Modern',
+    label: 'Modern',
+    displayLabel: 'Hiện Đại',
     icon: MdOutlineVilla,
-    description: 'This property is morden'
+    description: 'Nơi nghỉ hiện đại'
   },
   {
-    label:'Countryside',
+    label: 'Countryside',
+    displayLabel: 'Nông Thôn',
     icon: TbMountain,
-    description: 'This property is in the countryside'
+    description: 'Nơi nghỉ ở nông thôn'
   },
   {
-    label:'Pools',
+    label: 'Pools',
+    displayLabel: 'Hồ Bơi',
     icon: TbPool,
-    description: 'This property is a pool'
+    description: 'Nơi nghỉ có hồ bơi'
   },
   {
-    label:'Island',
+    label: 'Island',
+    displayLabel: 'Đảo',
     icon: GiIsland,
-    description: 'This property is on island'
+    description: 'Nơi nghỉ trên đảo'
   },
   {
-    label:'Lake',
+    label: 'Lake',
+    displayLabel: 'Hồ',
     icon: GiBoatFishing,
-    description: 'This property is close to a lake'
+    description: 'Nơi nghỉ gần hồ'
   },
   {
-    label:'Skiing',
+    label: 'Skiing',
+    displayLabel: 'Trượt Tuyết',
     icon: FaSkiing,
-    description: 'This property has skiing activities'
+    description: 'Nơi nghỉ có hoạt động trượt tuyết'
   },
   {
-    label:'Castle',
+    label: 'Castle',
+    displayLabel: 'Lâu Đài',
     icon: GiCastle,
-    description: 'This property is in a castle'
+    description: 'Nơi nghỉ trong lâu đài'
   },
   {
-    label:'Camping',
+    label: 'Camping',
+    displayLabel: 'Cắm Trại',
     icon: GiForestCamp,
-    description: 'This property has camping activities'
+    description: 'Nơi nghỉ có hoạt động cắm trại'
   },
   {
-    label:'Arctic',
+    label: 'Arctic',
+    displayLabel: 'Bắc Cực',
     icon: BsSnow,
-    description: 'This property is camping activities'
+    description: 'Nơi nghỉ gần Bắc Cực'
   },
   {
-    label:'Cave',
+    label: 'Cave',
+    displayLabel: 'Hang Động',
     icon: GiCaveEntrance,
-    description: 'This property is in a cave'
+    description: 'Nơi nghỉ trong hang động'
   },
   {
-    label:'Desert',
+    label: 'Desert',
+    displayLabel: 'Sa Mạc',
     icon: GiCactus,
-    description: 'This property is in the desert'
+    description: 'Nơi nghỉ trong sa mạc'
   },
   {
-    label:'Barns',
+    label: 'Barns',
+    displayLabel: 'Nhà Kho',
     icon: GiBarn,
-    description: 'This property is in the barn'
+    description: 'Nơi nghỉ trong nhà kho'
   },
   {
-    label:'Lux',
+    label: 'Lux',
+    displayLabel: 'Sang Trọng',
     icon: IoDiamond,
-    description: 'This property is luxurious'
+    description: 'Nơi nghỉ sang trọng'
   },
+];
 
-]
+export const categoryTranslations = {
+  Beach: 'Bãi Biển',
+  Windmills: 'Cối Xay Gió',
+  Modern: 'Hiện Đại',
+  Countryside: 'Nông Thôn',
+  Pools: 'Hồ Bơi',
+  Island: 'Đảo',
+  Lake: 'Ven hồ',
+  Skiing: 'Trượt Tuyết',
+  Castle: 'Lâu Đài',
+  Camping: 'Cắm Trại',
+  Arctic: 'Vùng Bắc Cực',
+  Cave: 'Hang Động',
+  Desert: 'Sa Mạc',
+  Barns: 'Nhà kho',
+  Lux: 'Sang Trọng'
+};
 
 const Categories = () => {
   const params = useSearchParams();
@@ -113,11 +145,12 @@ const Categories = () => {
       >
         {categories.map((item)=>(
           <CategoryBox
-            key = {item.label}
-            label={item.label}
-            selected={category === item.label}
-            icon={item.icon}
-          />
+          key={item.label}
+          label={item.label}
+          displayLabel={item.displayLabel} // Truyền tên tiếng Việt
+          selected={category === item.label}
+          icon={item.icon}        
+             />
         ))}
         
       </div>

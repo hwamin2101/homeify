@@ -26,8 +26,8 @@ const TripsPage = async () => {
         return (
             <ClientOnly>
                 <EmptyState
-                    title="No trips found"
-                    subtitle="Looks like you havent reserved any trips."
+                    title="Không tìm thấy danh mục nào"
+                    subtitle="Co vẻ như bạn chưa đặt bất kỳ chuyến đi nào."
                 />
             </ClientOnly>
         )

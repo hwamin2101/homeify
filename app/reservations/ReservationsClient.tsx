@@ -32,7 +32,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             router.refresh();
         })
         .catch(() => {
-            toast.error('Something went wrong.');
+            toast.error('Có gì đó không ổn.');
         })
         .finally(() => {
             setDeletingId('');
@@ -42,8 +42,8 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
     return (
         <Container>
             <Heading 
-                title="Reservations"
-                subtitle="Bookings on your properties"
+                title="Đặt chỗ"
+                subtitle="Danh sách những địa điểm bạn đã đặt chỗ!"
             />
             <div
                 className="
@@ -66,7 +66,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
                         actionId={reservation.id}
                         onAction={onCancel}
                         disabled={deletingId === reservation.id}
-                        actionLabel="Cancel guest reservation"
+                        actionLabel="Hủy đặt chỗ"
                         currentUser={currentUser}
                     />
                 ))}

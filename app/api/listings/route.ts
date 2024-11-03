@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return NextResponse.json({ error: "User not authenticated" }, { status: 401 });
+    return NextResponse.json({ error: "Người dùng chưa được xác thực." }, { status: 401 });
   }
 
   const body = await request.json();
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   // Validate the request body
   for (const value of Object.keys(body)) {
     if (!body[value]) {
-      return NextResponse.json({ error: `${value} is required` }, { status: 400 });
+      return NextResponse.json({ error: `${value} bắt buộc` }, { status: 400 });
     }
   }
 
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(listing);
   } catch (error) {
-    console.error("Error creating listing:", error);
-    return NextResponse.json({ error: "Failed to create listing" }, { status: 500 });
+    console.error("Lỗi khi tạo danh sách:", error);
+    return NextResponse.json({ error: "Không tạo được danh sách" }, { status: 500 });
   }
 }

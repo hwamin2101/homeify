@@ -27,7 +27,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ( {
 
         axios.delete(`/api/listings/${id}`)
         .then(() => {
-            toast.success('Listing deleted');
+            toast.success('Đã xóa danh sách');
             router.refresh();
         })
         .catch((error) => {
@@ -41,8 +41,8 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ( {
     return (
         <Container>
             <Heading 
-                title="Properties"
-                subtitle="List of your properties"
+                title="Tài sản của bạn"
+                subtitle="Danh sách tài sản của bạn"
             />
             <div
                 className="
@@ -64,7 +64,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ( {
                         actionId={listing.id}
                         onAction={onCancel}
                         disabled={deletingId === listing.id}
-                        actionLabel="Delete property"
+                        actionLabel="Xóa danh mục"
                         currentUser={currentUser}
                     />
                 ))}

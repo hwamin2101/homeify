@@ -47,7 +47,7 @@ const UserMenu: React.FC<userMenuProps> = ({ currentUser }) => {
       cursor-pointer
       "
         >
-          Homeify your home
+          Cho thuê chỗ ở qua Homeify
         </div>
         <div
           onClick={toggleOpen}
@@ -92,19 +92,19 @@ const UserMenu: React.FC<userMenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => router.push("/trips")} label="My trips" />
-                <MenuItem onClick={() => router.push("/favorites")} label="My favorites" />
-                <MenuItem onClick={() => router.push("/reservations")} label="My reservation" />
-                <MenuItem onClick={() => router.push("/properties")} label="My properties" />
-                <MenuItem onClick={rentModal.onOpen} label="Homeify my home" />
+                <MenuItem onClick={() => router.push("/trips")} label="Chuyến đi" />
+                <MenuItem onClick={() => router.push("/favorites")} label="Yêu thích" />
+                <MenuItem onClick={() => router.push("/reservations")} label="Đặt chỗ " />
+                <MenuItem onClick={() => router.push("/properties")} label="Quản lý nhà/phòng cho thuê" />
+                <MenuItem onClick={rentModal.onOpen} label="Bắt đầu cho thuê" />
                 <hr />
-                <MenuItem onClick={() => signOut()} label="Logout" />
+                <MenuItem onClick={() => signOut()} label="Đăng xuất" />
               </>
             ) : (
               <>
-                <MenuItem onClick={LoginModal.onOpen} label="Login" />
+                <MenuItem onClick={LoginModal.onOpen} label="Đăng nhập" />
 
-                <MenuItem onClick={RegisterModal.onOpen} label="Sign up" />
+                <MenuItem onClick={RegisterModal.onOpen} label="Đăng ký" />
               </>
             )}
           </div>

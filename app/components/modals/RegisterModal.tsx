@@ -38,12 +38,12 @@ const RegisterModal = () => {
 
     axios.post('/api/register', data)
       .then(() => {
-        toast.success('Success!')
+        toast.success('Thành công!')
         RegisterModal.onClose();
         LoginModal.onOpen();
       })
       .catch((error) => {
-        toast.error('Something went wrong.');
+        toast.error('Có gì đó không ổn.');
       })
       .finally(() => {
         setIsLoading(false);
@@ -56,7 +56,7 @@ const RegisterModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Homeify" subtitle="Create an account!" />
+      <Heading title="Chào mừng bạn đến với Homeify" subtitle="Tạo một tài khoản!" />
       <Input
         id="email"
         label="Email"
@@ -90,13 +90,13 @@ const RegisterModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="Tiếp tục với Google"
         icon={FcGoogle}
         onClick={() => signIn("google")}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="Tiếp tục với Github"
         icon={AiFillGithub}
         onClick={() => signIn("github")} //kieu khong bam vao github de login duoc :)) 2:36:38
       />
@@ -109,7 +109,7 @@ const RegisterModal = () => {
                 "
       >
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>Bạn đã có tài khoản?</div>
           <div
             onClick={toggle}
             className="
@@ -118,7 +118,7 @@ const RegisterModal = () => {
                             hover:underline
                         "
           >
-            Log in
+           Đăng nhập
           </div>
         </div>
       </div>
@@ -129,8 +129,8 @@ const RegisterModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={RegisterModal.isOpen}
-      title="Register"
-      actionLabel="Continue"
+      title="Đăng ký"
+      actionLabel="Tiếp tục"
       onClose={RegisterModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

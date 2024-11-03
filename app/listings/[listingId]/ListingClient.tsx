@@ -67,13 +67,13 @@ const ListingClient: React.FC<ListingClientProps> = ({
       listingId: listing?.id
     })
     .then(() => {
-      toast.success('Listing reserved!');
+      toast.success('Danh sách đã được bảo lưu!');
       setDateRange(initialDateRange);
       //redirect to /trips
       router.push('/trips');
     })
     .catch(() => {
-      toast.error('Something went worng.');
+      toast.error('Có gì đó không ổn.');
     })
     .finally(() => {
       setIsLoading(false);

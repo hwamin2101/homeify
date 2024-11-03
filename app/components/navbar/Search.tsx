@@ -22,7 +22,7 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Anywhere';
+    return 'Địa điểm';
   }, [getByValue, locationValue]);
 
   const durationLable = useMemo(() => {
@@ -35,16 +35,16 @@ const Search = () => {
         diff = 1
       }
 
-      return `${diff} Day`;
+      return `${diff} Ngày`;
     }
-    return 'Any Week'
+    return 'Thời gian'
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
     if (guestCount) {
-      return `${guestCount} Guests`;
+      return `${guestCount} Khách`;
     }
-    return 'Add Guests';
+    return 'Thêm khách';
   }, [guestCount]);
 
   return ( 
@@ -109,7 +109,7 @@ const Search = () => {
           <div
           className="
           p-2
-          bg-rose-500
+         bg-customBlue
           rounded-full
           text-white
           "
