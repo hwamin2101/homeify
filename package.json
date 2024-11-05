@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate || echo 'Prisma generation failed'",
+
   },
   "dependencies": {
     "@next-auth/mongodb-adapter": "^1.1.3",
