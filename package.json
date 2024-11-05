@@ -1,3 +1,7 @@
+"scripts": {
+  "postinstall": "prisma generate"
+},
+
 {
   "name": "homeify-app",
   "version": "0.1.0",
